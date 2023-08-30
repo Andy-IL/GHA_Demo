@@ -1,9 +1,9 @@
 #  YML to get jmeter and run it
 
+name: jmeter_notAWS
+
 on:
   workflow_dispatch:
-
- 
 
 jobs:
   build:
