@@ -3,6 +3,7 @@
 name: jmeter_notAWS
 
 on:
+  push:
   workflow_dispatch:
 
 jobs:
@@ -13,11 +14,8 @@ jobs:
      - uses: actions/checkout@v3
 
      - name: setup-jmeter
-
        run: |
-          #  sudo apt-get update # not needed
           java -version  
-          # sudo apt install -y default-jdk
           sudo wget https://dlcdn.apache.org//jmeter/binaries/apache-jmeter-5.6.2.tgz
           sudo tar -xvf apache-jmeter-5.6.2.tgz
           cd $GITHUB_WORKSPACE/apache-jmeter-5.6.2/bin
@@ -27,9 +25,7 @@ jobs:
           java -jar ApacheJMeter.jar -v
           ps -ef | grep java
      
-
      - name: download CMD Runner
-
        run: |
           echo "Downloading CMDRunner"
           cd $GITHUB_WORKSPACE/apache-jmeter-5.6.2/lib
@@ -37,9 +33,7 @@ jobs:
           ls -al
 
      - name: download Plugin Manager
-
        run: |
-
           cd $GITHUB_WORKSPACE/apache-jmeter-5.6.2/lib/ext
           sudo wget  https://repo1.maven.org/maven2/kg/apc/jmeter-plugins-manager/1.6/jmeter-plugins-manager-1.6.jar
           ls -al
@@ -51,19 +45,18 @@ jobs:
 
      - name: Look for jmx in directory 
        run: | 
-          cd /home/runner/work/GHA_Demo/GHA_Demo
+          cd $GITHUB_WORKSPACE/scenarios
           ls -al
-
 
      - name: Run JMeter Tests
 
        run: |
           cd $GITHUB_WORKSPACE/apache-jmeter-5.6.2/bin
-          sudo ./jmeter.sh -J-Xms2g -J-Xmx2g J-XX:MaxMetaspaceSize=512m -n -t /home/runner/work/GHA_Demo/GHA_Demo/N01_HomepageDemo.jmx -l result.csv
+          sudo ./jmeter.sh -J-Xms2g -J-Xmx2g J-XX:MaxMetaspaceSize=512m -n -t $GITHUB_WORKSPACE/scenarios/BBC_Demo.jmx -l result.csv
           ls -al
 
      - name: Upload Results
        uses: actions/upload-artifact@v3
        with:
           name: jmeter-results
-          path: /home/runner/work/GHA_Demo/GHA_Demo/apache-jmeter-5.6.2/bin/result.csv
+          path: $GITHUB_WORKSPACE/apache-jmeter-5.6.2/bin/result.csv
