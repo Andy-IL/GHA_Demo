@@ -55,6 +55,11 @@ jobs:
             -q $GITHUB_WORKSPACE/properties/Short_Smoke_Test.properties \
             -o $GITHUB_WORKSPACE/results/jmeter_report.html
 
+     - name: look for results files
+       run: |
+         cd $GITHUB_WORKSPACE/results
+         ls -al
+       
      - name: Upload csv Results
        uses: actions/upload-artifact@v3
        with:
