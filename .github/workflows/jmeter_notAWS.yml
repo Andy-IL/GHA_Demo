@@ -53,7 +53,7 @@ jobs:
             -t $GITHUB_WORKSPACE/scenarios/BBC_Demo.jmx \
             -l result.csv \
             -q $GITHUB_WORKSPACE/properties/Short_Smoke_Test.properties \
-            -o $GITHUB_WORKSPACE/reports/jmeter_report.html
+            -o $GITHUB_WORKSPACE/results/jmeter_report.html
           pwd
 
      - name: Upload csv Results
