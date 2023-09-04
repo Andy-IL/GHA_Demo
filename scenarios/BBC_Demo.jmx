@@ -113,6 +113,24 @@
           </UniformRandomTimer>
           <hashTree/>
         </hashTree>
+        <nz.co.breakpoint.jmeter.JUnitReporter guiclass="TestBeanGUI" testclass="nz.co.breakpoint.jmeter.JUnitReporter" testname="JUnit Reporter" enabled="true">
+          <stringProp name="filename">results/junit_results.xml</stringProp>
+          <collectionProp name="kpis">
+            <elementProp name="90th percentile" elementType="nz.co.breakpoint.jmeter.KPI" testname="90th percentile">
+              <stringProp name="metric">P90</stringProp>
+              <stringProp name="label">HTTP Request.*</stringProp>
+              <stringProp name="comparator">&lt;=</stringProp>
+              <stringProp name="threshold">1000</stringProp>
+            </elementProp>
+            <elementProp name="Max response" elementType="nz.co.breakpoint.jmeter.KPI" testname="Max response">
+              <stringProp name="metric">MAX</stringProp>
+              <stringProp name="label">HTTP Request - Home</stringProp>
+              <stringProp name="comparator">&lt;=</stringProp>
+              <stringProp name="threshold">600</stringProp>
+            </elementProp>
+          </collectionProp>
+        </nz.co.breakpoint.jmeter.JUnitReporter>
+        <hashTree/>
       </hashTree>
       <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="false">
         <boolProp name="ResultCollector.error_logging">false</boolProp>
@@ -222,7 +240,7 @@
             <connectTime>true</connectTime>
           </value>
         </objProp>
-        <stringProp name="filename">C:\performance_testing\JMeterResults\jmeter-results (3)\result.csv</stringProp>
+        <stringProp name="filename">C:\performance_testing\JMeterResults\jmeter-results (2)\result.csv</stringProp>
       </ResultCollector>
       <hashTree/>
       <kg.apc.jmeter.vizualizers.CorrectedResultCollector guiclass="kg.apc.jmeter.vizualizers.ThreadsStateOverTimeGui" testclass="kg.apc.jmeter.vizualizers.CorrectedResultCollector" testname="jp@gc - Active Threads Over Time" enabled="false">
