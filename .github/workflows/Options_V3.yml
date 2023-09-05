@@ -12,10 +12,36 @@ env:
 jobs:
   choose_option:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Choose Option
-        id: choose_option
-        run: echo "Selected option is ${{ env.SELECTED_OPTION }}"
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Display Menu
+        run: |
+          echo "Select an option:"
+          echo "1. Option 1"
+          echo "2. Option 2"
+          echo "3. Option 3"
+          read -p "Enter the number of your choice: " choice
+
+      - name: Process Choice
+        run: |
+          case $choice in
+            1)
+              chosen_option="Option 1"
+              ;;
+            2)
+              chosen_option="Option 2"
+              ;;
+            3)
+              chosen_option="Option 3"
+              ;;
+            *)
+              echo "Invalid choice"
+              exit 1
+              ;;
+          esac
 
       - name: Display Chosen Option
-        run: echo "Chosen option is ${{ steps.choose_option.outputs.selected_option }}"
+        run: echo "Chosen option is $chosen_option"
