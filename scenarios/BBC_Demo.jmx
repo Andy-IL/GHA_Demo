@@ -114,7 +114,7 @@
           <hashTree/>
         </hashTree>
         <nz.co.breakpoint.jmeter.JUnitReporter guiclass="TestBeanGUI" testclass="nz.co.breakpoint.jmeter.JUnitReporter" testname="JUnit Reporter" enabled="true">
-          <stringProp name="filename">results/junit_results.xml</stringProp>
+          <stringProp name="filename">junit_results.xml</stringProp>
           <collectionProp name="kpis">
             <elementProp name="90th percentile" elementType="nz.co.breakpoint.jmeter.KPI" testname="90th percentile">
               <stringProp name="metric">P90</stringProp>
