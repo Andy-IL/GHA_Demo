@@ -53,7 +53,7 @@ jobs:
             -t $GITHUB_WORKSPACE/scenarios/BBC_Demo.jmx \
             -l $GITHUB_WORKSPACE/results/result.csv \
             -q $GITHUB_WORKSPACE/properties/Short_Smoke_Test.properties \
-            -o $GITHUB_WORKSPACE/results
+            -o $GITHUB_WORKSPACE/results/html_results
 
      - name: look for results files
        run: |         
