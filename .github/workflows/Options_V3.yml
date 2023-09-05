@@ -3,17 +3,11 @@ name: Workflow with Input Options
 on:
   workflow_dispatch:
 
-    inputs:
-      option:
-        description: 'Select an option'
-        required: true
+env:
+  OPTION_1: "Option 1"
+  OPTION_2: "Option 2"
+  OPTION_3: "Option 3"
 
-        # Define the available options as comma-separated values:
-        options: |
-          -  'Option 1'
-          -  'Option 2'
-          -  'Option 3'
-        default: 'Option 1'
         
 jobs:
   choose_option:
