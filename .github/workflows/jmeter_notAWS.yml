@@ -72,6 +72,12 @@ jobs:
           name: jmeter-log
           path: /home/runner/work/GHA_Demo/GHA_Demo/apache-jmeter-5.6.2/bin/jmeter.log   # using WORKSPACE variable does not work
 
+     - name: Upload html Results
+       uses: actions/upload-artifact@v3
+       with:
+          name: jmeter-results-html
+          path: /home/runner/work/GHA_Demo/GHA_Demo/results/html_results   # using WORKSPACE variable does not work
+         
      - name: Publish Test Report
        uses: mikepenz/action-junit-report@v3
        if: success() || failure() # always run even if the previous step fails
@@ -81,9 +87,3 @@ jobs:
            fail_on_failure: true
            include_passed: true
 
-     - name: Upload html Results
-       uses: actions/upload-artifact@v3
-       with:
-          name: jmeter-results-html
-          path: /home/runner/work/GHA_Demo/GHA_Demo/results/html_results   # using WORKSPACE variable does not work
-          
