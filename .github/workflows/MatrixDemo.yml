@@ -1,0 +1,12 @@
+#  demo use of matrix 
+name: demo_matrix
+on:
+  workflow_dispatch:
+
+jobs:
+  matrix_example: 
+    runs-on: ubuntu-latest
+  
+  example_matrix:
+    strategy:
+      matrix:
