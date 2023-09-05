@@ -12,10 +12,10 @@ env:
 jobs:
   choose_option:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
+      - name: Choose Option
+        id: choose_option
+        run: echo "Selected option is ${{ env.SELECTED_OPTION }}"
 
       - name: Display Chosen Option
-        run: echo "Chosen option is ${{ inputs.option }}"
+        run: echo "Chosen option is ${{ steps.choose_option.outputs.selected_option }}"
