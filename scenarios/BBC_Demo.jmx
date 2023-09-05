@@ -120,13 +120,19 @@
               <stringProp name="metric">P90</stringProp>
               <stringProp name="label">HTTP Request.*</stringProp>
               <stringProp name="comparator">&lt;=</stringProp>
-              <stringProp name="threshold">1000</stringProp>
+              <stringProp name="threshold">${__P(P90Max,1000)}</stringProp>
             </elementProp>
             <elementProp name="Max response" elementType="nz.co.breakpoint.jmeter.KPI" testname="Max response">
               <stringProp name="metric">MAX</stringProp>
               <stringProp name="label">HTTP Request - Home</stringProp>
               <stringProp name="comparator">&lt;=</stringProp>
-              <stringProp name="threshold">60</stringProp>
+              <stringProp name="threshold">${__P(ResponsesMax,2000)}</stringProp>
+            </elementProp>
+            <elementProp name="Not more than 1% sample errors" elementType="nz.co.breakpoint.jmeter.KPI" testname="Not more than 1% sample errors">
+              <stringProp name="metric">ERRORS</stringProp>
+              <stringProp name="comparator">&lt;=</stringProp>
+              <stringProp name="threshold">${__P(ErrorsFraction,0.01)}</stringProp>
+              <stringProp name="label">HTTP Request.*</stringProp>
             </elementProp>
           </collectionProp>
         </nz.co.breakpoint.jmeter.JUnitReporter>
