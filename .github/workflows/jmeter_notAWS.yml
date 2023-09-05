@@ -53,10 +53,11 @@ jobs:
             -t $GITHUB_WORKSPACE/scenarios/BBC_Demo.jmx \
             -l $GITHUB_WORKSPACE/results/result.csv \
             -q $GITHUB_WORKSPACE/properties/Short_Smoke_Test.properties \
-            -o $GITHUB_WORKSPACE/results/jmeter_report.html
+            -o jmeter_report.html
 
      - name: look for results files
        run: |
+         ls -alrt
          cd $GITHUB_WORKSPACE/results
          ls -al
        
