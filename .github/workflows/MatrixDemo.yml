@@ -5,19 +5,17 @@ on:
 
 jobs:
   matrix_example: 
-  
-  example_matrix:
+    runs-on: ubuntu-latest
+
     strategy:
-       max-parallel: 1
-       fail-fast: false
-       matrix:
+      max-parallel: 1
+      fail-fast: false
+      matrix:
         ref_letter: [A,B,C,D]
         index_num: [1,2,3]
-
-        runs-on: ubuntu-latest
-        
-   steps: 
-     - name: Show result
-       run: |
-         echo "Ref Letter:  " ${{matrix.ref_letter}}
-         echo "index num:   "  ${{matrix.index_num}}
+      
+    steps: 
+      - name: Show result
+        run: |
+          echo "Ref Letter:  " ${{matrix.ref_letter}}
+          echo "index num:   "  ${{matrix.index_num}}
