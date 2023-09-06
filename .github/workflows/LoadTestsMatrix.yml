@@ -4,6 +4,12 @@ name: load-test-matrix
 
 on:
   workflow_dispatch:
+  push:
+    branches: [ "main" ]
+    paths:
+      - 'LoadTestsMatrix.yml'
+      - scenarios
+      - '**.jmx'
 
 jobs: 
     load-tests-matrix:
