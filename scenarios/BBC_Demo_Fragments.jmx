@@ -37,7 +37,7 @@
       </ThreadGroup>
       <hashTree>
         <IncludeController guiclass="IncludeControllerGui" testclass="IncludeController" testname="Include Controller - Home" enabled="true">
-          <stringProp name="IncludeController.includepath">${(fragments_dir,../fragments)}\HTTP Request - Home.jmx</stringProp>
+          <stringProp name="IncludeController.includepath">HTTP Request - Home.jmx</stringProp>
         </IncludeController>
         <hashTree/>
         <TestAction guiclass="TestActionGui" testclass="TestAction" testname="Think Time" enabled="true">
@@ -47,7 +47,7 @@
         </TestAction>
         <hashTree/>
         <IncludeController guiclass="IncludeControllerGui" testclass="IncludeController" testname="Include Controller - News" enabled="true">
-          <stringProp name="IncludeController.includepath">C:\performance_testing\GHA_Demo\fragments\HTTP Request - News.jmx</stringProp>
+          <stringProp name="IncludeController.includepath">HTTP Request - News.jmx</stringProp>
         </IncludeController>
         <hashTree/>
         <TestAction guiclass="TestActionGui" testclass="TestAction" testname="Think Time" enabled="true">
@@ -63,7 +63,7 @@
           <hashTree/>
         </hashTree>
         <IncludeController guiclass="IncludeControllerGui" testclass="IncludeController" testname="Include Controller" enabled="true">
-          <stringProp name="IncludeController.includepath">C:\performance_testing\GHA_Demo\fragments\HTTP Request - Article.jmx</stringProp>
+          <stringProp name="IncludeController.includepath">HTTP Request - Article.jmx</stringProp>
         </IncludeController>
         <hashTree/>
         <TestAction guiclass="TestActionGui" testclass="TestAction" testname="Think Time" enabled="true">
