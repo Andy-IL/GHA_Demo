@@ -57,7 +57,7 @@ jobs:
                  sudo java -jar ApacheJMeter.jar -J-Xms2g -J-Xmx2g J-XX:MaxMetaspaceSize=512m -n \
                       -t $GITHUB_WORKSPACE/scenarios/BBC_Demo.jmx \
                       -l $GITHUB_WORKSPACE/results/result.csv \
-                      -q $GITHUB_WORKSPACE/properties/$test-properties-file.properties \
+                      -q $GITHUB_WORKSPACE/properties/${{matrix.test-properties-file}}.properties \
                       -q $GITHUB_WORKSPACE/properties/Smoke_Test_NFR.properties \
                       -e  -o $GITHUB_WORKSPACE/results/html_results
           
@@ -69,19 +69,19 @@ jobs:
            - name: Upload csv Results
              uses: actions/upload-artifact@v3
              with:
-                name: jmeter-results
+                name: jmeter-results-${{matrix.test-properties-file}}
                 path: /home/runner/work/GHA_Demo/GHA_Demo/results/result.csv   # using WORKSPACE variable does not work
           
            - name: Upload jmeter log
              uses: actions/upload-artifact@v3
              with:
-                    name: jmeter-log
+                    name: jmeter-log-${{matrix.test-properties-file}}
                     path: /home/runner/work/GHA_Demo/GHA_Demo/apache-jmeter-5.6.2/bin/jmeter.log   # using WORKSPACE variable does not work
           
            - name: Upload html Results
              uses: actions/upload-artifact@v3
              with:
-                    name: jmeter-results-html
+                    name: jmeter-results-html-${{matrix.test-properties-file}}
                     path: /home/runner/work/GHA_Demo/GHA_Demo/results/html_results   # using WORKSPACE variable does not work
                    
            - name: Publish Test Report
