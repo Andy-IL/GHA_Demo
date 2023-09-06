@@ -11,7 +11,7 @@ jobs:
 
         strategy:
           max-parallel: 1
-          fail-fast: false
+          fail-fast: true
           matrix:
             test-properties-file: [Short_Smoke_Test,10VU_Load_Test]
 
