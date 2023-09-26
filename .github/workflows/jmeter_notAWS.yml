@@ -46,10 +46,10 @@ jobs:
           cd $GITHUB_WORKSPACE/scenarios
           ls -al
 
-     - name: Run JMeter Tests
+     - name: Run JMeter Test
        run: |
           cd $GITHUB_WORKSPACE/apache-jmeter-5.6.2/bin
-          sudo java -jar ApacheJMeter.jar -J-Xms2g -J-Xmx2g J-XX:MaxMetaspaceSize=512m -n \
+          sudo java -Xms2g -Xmx2g -jar ApacheJMeter.jar  -n \
             -t $GITHUB_WORKSPACE/scenarios/BBC_Demo.jmx \
             -l $GITHUB_WORKSPACE/results/result.csv \
             -q $GITHUB_WORKSPACE/properties/Short_Smoke_Test.properties \
