@@ -17,7 +17,7 @@ jobs:
        run: |
           java -version  
           sudo wget -q https://dlcdn.apache.org//jmeter/binaries/apache-jmeter-5.6.2.tgz
-          sudo tar -xvf apache-jmeter-5.6.2.tgz 
+          sudo tar -xvfq apache-jmeter-5.6.2.tgz 
           cd $GITHUB_WORKSPACE/apache-jmeter-5.6.2/bin
           echo "locating jmeter files"
           pwd
