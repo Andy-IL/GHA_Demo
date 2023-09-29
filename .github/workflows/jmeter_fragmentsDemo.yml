@@ -40,7 +40,8 @@ jobs:
        run: |
           cd $GITHUB_WORKSPACE/apache-jmeter-5.6.2/lib
           sudo java  -jar cmdrunner-2.2.jar --tool org.jmeterplugins.repository.PluginManagerCMD \
-          install-all-except jpgc-hadoop,jpgc-oauth,ulp-jmeter-autocorrelator-plugin,ulp-jmeter-videostreaming-plugin,ulp-jmeter-gwt-plugin,tilln-iso8583,mqtt-xmeter
+          install jpgc-functions,jpgc-cmd,jpgc-graphs-basic,jpgc-graphs-additional,jpgc-graphs-dist,jpgc-graphs-vs,jpgc-ggl,\
+          jpgc-graphs-composite,tilln-junit,jpgc-csl,jpgc-mergeresults,jpgc-ffw,jpgc-casutg,jpgc-tst,jpgc-dummy, \bzm-parallel,jpgc-autostop,jpgc-synthesis, bzm-random-csv >/dev/null 2>&1
 
      - name: Look for jmx in directory 
        run: | 
@@ -51,7 +52,7 @@ jobs:
        run: |
           cd $GITHUB_WORKSPACE/apache-jmeter-5.6.2/bin
           
-          sudo java -Xms2g -Xmx2g -jar $GITHUB_WORKSPACE/apache-jmeter-5.6.2/bin/ApacheJMeter.jar  J-XX:MaxMetaspaceSize=512m -n \           
+          sudo java -Xms2g -Xmx2g -jar $GITHUB_WORKSPACE/apache-jmeter-5.6.2/bin/ApacheJMeter.jar   -n \           
             -t $GITHUB_WORKSPACE/scenarios/BBC_Demo_Fragments.jmx \
             -l $GITHUB_WORKSPACE/results/result.csv \
             -q $GITHUB_WORKSPACE/properties/Short_Smoke_Test.properties \
