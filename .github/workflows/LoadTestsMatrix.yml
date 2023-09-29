@@ -27,31 +27,31 @@ jobs:
            - name: setup-jmeter
              run: |
                  java -version  
-                 sudo wget https://dlcdn.apache.org//jmeter/binaries/apache-jmeter-5.6.2.tgz
-                 sudo tar -xvf apache-jmeter-5.6.2.tgz
+                 sudo wget -q https://dlcdn.apache.org//jmeter/binaries/apache-jmeter-5.6.2.tgz
+                 sudo tar -xf apache-jmeter-5.6.2.tgz
                  cd $GITHUB_WORKSPACE/apache-jmeter-5.6.2/bin
                  echo "locating jmeter files"
                  pwd
-                 java -jar ApacheJMeter.jar -v
-                 ps -ef | grep java
-            
+                 sudo java -jar ApacheJMeter.jar -v
+                 
            - name: download CMD Runner
              run: |
                  echo "Downloading CMDRunner"
                  cd $GITHUB_WORKSPACE/apache-jmeter-5.6.2/lib
-                 sudo wget  https://repo1.maven.org/maven2/kg/apc/cmdrunner/2.2/cmdrunner-2.2.jar
+                 sudo wget -q https://repo1.maven.org/maven2/kg/apc/cmdrunner/2.2/cmdrunner-2.2.jar
        
            - name: download Plugin Manager
              run: |
                  cd $GITHUB_WORKSPACE/apache-jmeter-5.6.2/lib/ext
-                 sudo wget  https://repo1.maven.org/maven2/kg/apc/jmeter-plugins-manager/1.6/jmeter-plugins-manager-1.6.jar
+                 sudo wget -q https://repo1.maven.org/maven2/kg/apc/jmeter-plugins-manager/1.6/jmeter-plugins-manager-1.6.jar
        
            - name: install plugins
              run: |
                  cd $GITHUB_WORKSPACE/apache-jmeter-5.6.2/lib
                  sudo java  -jar cmdrunner-2.2.jar --tool org.jmeterplugins.repository.PluginManagerCMD \
-                 install-all-except jpgc-hadoop,jpgc-oauth,ulp-jmeter-autocorrelator-plugin,ulp-jmeter-videostreaming-plugin,ulp-jmeter-gwt-plugin,tilln-iso8583,mqtt-xmeter
-       
+                 install jpgc-functions,jpgc-cmd,jpgc-graphs-basic,jpgc-graphs-additional,jpgc-graphs-dist,jpgc-graphs-vs,jpgc-ggl,\
+                 jpgc-graphs-composite,tilln-junit,jpgc-csl,jpgc-mergeresults,jpgc-ffw,jpgc-casutg,jpgc-tst,jpgc-dummy, \bzm-parallel,jpgc-autostop,jpgc-synthesis, bzm-random-csv >/dev/null 2>&1
+              
            - name: Look for jmx in directory 
              run: | 
                  cd $GITHUB_WORKSPACE/scenarios
