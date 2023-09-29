@@ -7,7 +7,7 @@ on:
   push:
     branches: [ "main" ]
     paths:
-      - 'LoadTestsMatrix.yml'
+      - LoadTestsMatrix.yml
       - scenarios
       - '**.jmx'
 
