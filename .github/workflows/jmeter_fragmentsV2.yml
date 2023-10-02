@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  JMeter-Demo:
+  JMeter-Fragments-Demo:
     runs-on: ubuntu-latest
 
     steps :
