@@ -54,7 +54,7 @@ jobs:
           
           sudo java -Xms2g -Xmx2g -jar ApacheJMeter.jar   -n \           
             -t $GITHUB_WORKSPACE/scenarios/BBC_Demo_Fragments.jmx \
-            -J VUsers=4 \
+            -Jincludecontroller.prefix=$GITHUB_WORKSPACE/fragments  \
             -l $GITHUB_WORKSPACE/results/result.csv \
             -q $GITHUB_WORKSPACE/properties/Short_Smoke_Test.properties \
             -q $GITHUB_WORKSPACE/properties/Smoke_Test_NFR.properties \
