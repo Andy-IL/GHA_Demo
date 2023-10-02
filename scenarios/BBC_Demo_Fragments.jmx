@@ -13,13 +13,7 @@
     </TestPlan>
     <hashTree>
       <Arguments guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
-        <collectionProp name="Arguments.arguments">
-          <elementProp name="v_fragment_dir" elementType="Argument">
-            <stringProp name="Argument.name">v_fragment_dir</stringProp>
-            <stringProp name="Argument.value">../fragments/</stringProp>
-            <stringProp name="Argument.metadata">=</stringProp>
-          </elementProp>
-        </collectionProp>
+        <collectionProp name="Arguments.arguments"/>
       </Arguments>
       <hashTree/>
       <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Thread Group" enabled="true">
@@ -39,6 +33,12 @@
         <IncludeController guiclass="IncludeControllerGui" testclass="IncludeController" testname="Include Controller - Home" enabled="true">
           <stringProp name="IncludeController.includepath">HTTP Request - Home.jmx</stringProp>
         </IncludeController>
+        <hashTree/>
+        <DebugSampler guiclass="TestBeanGUI" testclass="DebugSampler" testname="Debug Sampler" enabled="true">
+          <boolProp name="displayJMeterProperties">true</boolProp>
+          <boolProp name="displayJMeterVariables">true</boolProp>
+          <boolProp name="displaySystemProperties">true</boolProp>
+        </DebugSampler>
         <hashTree/>
         <TestAction guiclass="TestActionGui" testclass="TestAction" testname="Think Time" enabled="true">
           <intProp name="ActionProcessor.action">1</intProp>
@@ -103,9 +103,9 @@
         </nz.co.breakpoint.jmeter.JUnitReporter>
         <hashTree/>
         <DebugSampler guiclass="TestBeanGUI" testclass="DebugSampler" testname="Debug Sampler" enabled="true">
-          <boolProp name="displayJMeterProperties">false</boolProp>
+          <boolProp name="displayJMeterProperties">true</boolProp>
           <boolProp name="displayJMeterVariables">true</boolProp>
-          <boolProp name="displaySystemProperties">false</boolProp>
+          <boolProp name="displaySystemProperties">true</boolProp>
         </DebugSampler>
         <hashTree/>
       </hashTree>
