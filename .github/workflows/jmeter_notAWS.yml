@@ -68,7 +68,7 @@ jobs:
        uses: actions/upload-artifact@v3
        with:
           name: jmeter-results
-          path: /home/runner/_work/GHA_Demo/GHA_Demo/results/result.csv   # using WORKSPACE variable does not work
+          path: $GITHUB_WORKSPACE/results/result.csv   # using WORKSPACE variable does not work in Github runner
 
      - name: Upload jmeter log
        uses: actions/upload-artifact@v3
