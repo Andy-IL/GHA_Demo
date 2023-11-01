@@ -9,7 +9,7 @@ on:
 jobs:
   JMeter-Demo:
 #    runs-on: ubuntu-latest
-    runs-on: AIL_runner
+    runs-on: self-hosted
 
     steps :
      - uses: actions/checkout@v3
