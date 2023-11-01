@@ -17,28 +17,28 @@ jobs:
      - name: setup-jmeter
        run: |
           java -version  
-          sudo wget -q https://dlcdn.apache.org//jmeter/binaries/apache-jmeter-5.6.2.tgz
+          wget -q https://dlcdn.apache.org//jmeter/binaries/apache-jmeter-5.6.2.tgz
           tar -xf apache-jmeter-5.6.2.tgz 
           cd $GITHUB_WORKSPACE/apache-jmeter-5.6.2/bin
           echo "locating jmeter files"
           pwd
-          sudo java -jar ApacheJMeter.jar -v
+          java -jar ApacheJMeter.jar -v
          
      - name: download CMD Runner
        run: |
           echo "Downloading CMDRunner"
           cd $GITHUB_WORKSPACE/apache-jmeter-5.6.2/lib
-          sudo wget -q https://repo1.maven.org/maven2/kg/apc/cmdrunner/2.2/cmdrunner-2.2.jar
+          wget -q https://repo1.maven.org/maven2/kg/apc/cmdrunner/2.2/cmdrunner-2.2.jar
 
      - name: download Plugin Manager
        run: |
           cd $GITHUB_WORKSPACE/apache-jmeter-5.6.2/lib/ext
-          sudo wget -q https://repo1.maven.org/maven2/kg/apc/jmeter-plugins-manager/1.6/jmeter-plugins-manager-1.6.jar
+          wget -q https://repo1.maven.org/maven2/kg/apc/jmeter-plugins-manager/1.6/jmeter-plugins-manager-1.6.jar
 
      - name: install plugins
        run: |
           cd $GITHUB_WORKSPACE/apache-jmeter-5.6.2/lib
-          sudo java  -jar cmdrunner-2.2.jar --tool org.jmeterplugins.repository.PluginManagerCMD \
+          java  -jar cmdrunner-2.2.jar --tool org.jmeterplugins.repository.PluginManagerCMD \
           install jpgc-functions,jpgc-cmd,jpgc-graphs-basic,jpgc-graphs-additional,jpgc-graphs-dist,jpgc-graphs-vs,jpgc-ggl,\
           jpgc-graphs-composite,tilln-junit,jpgc-csl,jpgc-mergeresults,jpgc-ffw,jpgc-casutg,jpgc-tst,jpgc-dummy, \bzm-parallel,jpgc-autostop,jpgc-synthesis, bzm-random-csv >/dev/null 2>&1
 
@@ -52,7 +52,7 @@ jobs:
      - name: Run JMeter Test
        run: |
           cd $GITHUB_WORKSPACE/apache-jmeter-5.6.2/bin
-          sudo java -Xms2g -Xmx2g -jar ApacheJMeter.jar  -n \
+          java -Xms2g -Xmx2g -jar ApacheJMeter.jar  -n \
             -t $GITHUB_WORKSPACE/scenarios/BBC_Demo.jmx \
             -l $GITHUB_WORKSPACE/results/result.csv \
             -q $GITHUB_WORKSPACE/properties/Short_Smoke_Test.properties \
