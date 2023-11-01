@@ -74,7 +74,7 @@ jobs:
        uses: actions/upload-artifact@v3
        with:
           name: jmeter-log
-          path: /home/runner/work/GHA_Demo/GHA_Demo/apache-jmeter-5.6.2/bin/jmeter.log   # using WORKSPACE variable does not work
+          path: ${{ github.workspace }}/apache-jmeter-5.6.2/bin/jmeter.log   # using WORKSPACE variable does not work
 
      - name: Upload html Results
        uses: actions/upload-artifact@v3
