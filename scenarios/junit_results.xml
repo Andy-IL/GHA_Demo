@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?><testsuite errors="0" failures="1" name="JUnit Reporter" skipped="0" tests="3">
-    <testcase classname="90th percentile" name="P90(HTTP Request.*) &lt;= 300">
-        <failure message="">Actual value 459.800000 exceeds threshold 300.000000 for samples matching "HTTP Request.*"</failure>
-    </testcase>
-    <testcase classname="Max response" name="MAX(HTTP Request - Home) &lt;= 2000"/>
-    <testcase classname="Not more than 1% sample errors" name="ERRORS(HTTP Request.*) &lt;= 0.01"/>
-</testsuite>

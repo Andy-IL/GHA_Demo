@@ -1,3 +1,4 @@
 # gitignore for GHA_Demo
 # All files in results directory
 results/
+scenarios/junit_results.xml
