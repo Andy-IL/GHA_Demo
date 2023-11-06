@@ -1,0 +1,9 @@
+# Experimental Dockerfile
+#  get base image
+FROM ubuntu:22.04
+
+RUN apt-get update 
+
+RUN apt install adoptopenjdk/openjdk14:x86_64-tumbleweed-jre-14.0.2_12
+
+RUN java --version
