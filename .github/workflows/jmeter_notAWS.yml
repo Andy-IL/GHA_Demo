@@ -8,8 +8,8 @@ on:
 
 jobs:
   JMeter-Demo:
-    runs-on: ubuntu-latest
-#    runs-on: docker-runner1
+#    runs-on: ubuntu-latest
+    runs-on: docker-runner1
 
     steps :
      - uses: actions/checkout@v3

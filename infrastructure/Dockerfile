@@ -8,7 +8,7 @@ RUN apt install -y nano
 RUN apt install -y wget 
 RUN apt install -y curl
 # install java 
-RUN apt search openjdk-18-jre
+# RUN apt install openjdk-17-jdk
 # add non-root user
 RUN useradd -ms /bin/bash docker-user 
 RUN echo 'docker-user:docker' | chpasswd
