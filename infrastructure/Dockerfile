@@ -22,4 +22,6 @@ curl -o actions-runner-linux-x64-2.311.0.tar.gz -L https://github.com/actions/ru
 WORKDIR /home/docker-user/actions-runner
 # install dependencies
 RUN echo "8\n27" | sudo /home/docker-user/actions-runner/bin/installdependencies.sh 
+# back to root
 RUN exit
+RUN chown docker-user /home/docker-user/actions-runner
