@@ -9,8 +9,7 @@ on:
 jobs:
   JMeter-Demo:
 #    runs-on: ubuntu-latest
-#    runs-on: docker-runner1
-     runs-on: layton_runner4
+    runs-on: docker-runner
 
      steps :
      - uses: actions/checkout@v3
