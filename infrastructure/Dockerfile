@@ -13,7 +13,7 @@ RUN apt install -y openjdk-17-jre
 # add non-root user
 RUN useradd -ms /bin/bash docker-user 
 RUN echo 'docker-user:docker' | chpasswd
-RUN  echo 'docker-user ALL=(ALL) NOPASSWD:ALL' > /etc/sudoers.d/docker-user-sudo
+RUN echo 'docker-user ALL=(ALL) NOPASSWD:ALL' > /etc/sudoers.d/docker-user-sudo
 # Now install actions-runner
 RUN su docker-user &&  cd /home/docker-user && mkdir /home/docker-user/actions-runner && \
 cd  /home/docker-user/actions-runner && \
@@ -24,4 +24,5 @@ WORKDIR /home/docker-user/actions-runner
 RUN echo "8\n27" | sudo /home/docker-user/actions-runner/bin/installdependencies.sh 
 # back to root
 RUN exit
+# actions-runner directory is created as user 1001, oddly so make its owner docker-runner ready for the next operations
 RUN chown docker-user /home/docker-user/actions-runner
