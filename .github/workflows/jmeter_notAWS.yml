@@ -8,7 +8,7 @@ on:
 
 jobs:
   JMeter-Demo:
-     runs-on: Planit-001
+     runs-on: Planit002
 #    runs-on: ubuntu-latest
 #     runs-on: docker-runner
 
