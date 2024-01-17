@@ -1,4 +1,9 @@
 # gitignore for GHA_Demo
 # All files in results directory
+
+*.tgz
+*.zip
 results/
+results/*.zip
 scenarios/junit_results.xml
+scenarios/jmeter.log
