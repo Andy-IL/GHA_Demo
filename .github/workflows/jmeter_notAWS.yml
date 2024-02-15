@@ -8,8 +8,8 @@ on:
 
 jobs:
   JMeter-Demo:
-     runs-on: Planit002
-#    runs-on: ubuntu-latest
+    runs-on: ubuntu-latest
+#     runs-on: Planit002  # self-hosted runner
 #     runs-on: docker-runner
 
      steps :
