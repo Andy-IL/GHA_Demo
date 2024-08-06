@@ -1,84 +1,66 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jmeterTestPlan version="1.2" properties="5.0" jmeter="5.6.2">
+<jmeterTestPlan version="1.2" properties="5.0" jmeter="5.6.3">
   <hashTree>
-    <TestPlan guiclass="TestPlanGui" testclass="TestPlan" testname="Test Plan" enabled="true">
-      <stringProp name="TestPlan.comments"></stringProp>
-      <boolProp name="TestPlan.functional_mode">false</boolProp>
+    <TestPlan guiclass="TestPlanGui" testclass="TestPlan" testname="Test Plan">
       <boolProp name="TestPlan.tearDown_on_shutdown">true</boolProp>
-      <boolProp name="TestPlan.serialize_threadgroups">false</boolProp>
-      <elementProp name="TestPlan.user_defined_variables" elementType="Arguments" guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+      <elementProp name="TestPlan.user_defined_variables" elementType="Arguments" guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables">
         <collectionProp name="Arguments.arguments"/>
       </elementProp>
-      <stringProp name="TestPlan.user_define_classpath"></stringProp>
+      <boolProp name="TestPlan.functional_mode">false</boolProp>
+      <boolProp name="TestPlan.serialize_threadgroups">false</boolProp>
     </TestPlan>
     <hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Thread Group" enabled="true">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Thread Group">
+        <stringProp name="TestPlan.comments">${__P(RampTime,20)}</stringProp>
+        <stringProp name="ThreadGroup.num_threads">${__P(VUsers,6)}</stringProp>
+        <intProp name="ThreadGroup.ramp_time">0</intProp>
+        <stringProp name="ThreadGroup.duration">${__P(Duration,120)}</stringProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
+        <boolProp name="ThreadGroup.scheduler">true</boolProp>
         <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
-        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller">
           <intProp name="LoopController.loops">-1</intProp>
           <boolProp name="LoopController.continue_forever">false</boolProp>
         </elementProp>
-        <stringProp name="ThreadGroup.num_threads">${__P(VUsers,6)}</stringProp>
-        <stringProp name="ThreadGroup.ramp_time">0</stringProp>
-        <boolProp name="ThreadGroup.scheduler">true</boolProp>
-        <stringProp name="ThreadGroup.duration">${__P(Duration,120)}</stringProp>
-        <stringProp name="ThreadGroup.delay"></stringProp>
-        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
-        <stringProp name="TestPlan.comments">${__P(RampTime,20)}</stringProp>
-        <boolProp name="ThreadGroup.delayedStart">false</boolProp>
       </ThreadGroup>
       <hashTree>
-        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="HTTP Request - Home" enabled="true">
-          <boolProp name="HTTPSampler.postBodyRaw">false</boolProp>
-          <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
-            <collectionProp name="Arguments.arguments"/>
-          </elementProp>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="HTTP Request - Home">
+          <intProp name="HTTPSampler.concurrentPool">6</intProp>
           <stringProp name="HTTPSampler.domain">www.bbc.co.uk</stringProp>
           <stringProp name="HTTPSampler.port">443</stringProp>
           <stringProp name="HTTPSampler.protocol">https</stringProp>
           <stringProp name="HTTPSampler.path">https://www.bbc.co.uk/</stringProp>
-          <stringProp name="HTTPSampler.method">GET</stringProp>
           <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
-          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <stringProp name="HTTPSampler.method">GET</stringProp>
           <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
-          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
-          <boolProp name="HTTPSampler.BROWSER_COMPATIBLE_MULTIPART">false</boolProp>
-          <boolProp name="HTTPSampler.image_parser">false</boolProp>
-          <boolProp name="HTTPSampler.concurrentDwn">false</boolProp>
-          <stringProp name="HTTPSampler.concurrentPool">6</stringProp>
-          <boolProp name="HTTPSampler.md5">false</boolProp>
-          <intProp name="HTTPSampler.ipSourceType">0</intProp>
+          <boolProp name="HTTPSampler.postBodyRaw">false</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables">
+            <collectionProp name="Arguments.arguments"/>
+          </elementProp>
         </HTTPSamplerProxy>
         <hashTree/>
-        <TestAction guiclass="TestActionGui" testclass="TestAction" testname="Think Time" enabled="true">
+        <TestAction guiclass="TestActionGui" testclass="TestAction" testname="Think Time">
           <intProp name="ActionProcessor.action">1</intProp>
           <intProp name="ActionProcessor.target">0</intProp>
           <stringProp name="ActionProcessor.duration">${__P(ThinkTime,2000)}</stringProp>
         </TestAction>
         <hashTree/>
-        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="HTTP Request - News" enabled="true">
-          <boolProp name="HTTPSampler.postBodyRaw">false</boolProp>
-          <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
-            <collectionProp name="Arguments.arguments"/>
-          </elementProp>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="HTTP Request - News">
+          <intProp name="HTTPSampler.concurrentPool">6</intProp>
           <stringProp name="HTTPSampler.domain">www.bbc.co.uk</stringProp>
           <stringProp name="HTTPSampler.port">443</stringProp>
           <stringProp name="HTTPSampler.protocol">https</stringProp>
           <stringProp name="HTTPSampler.path">https://www.bbc.co.uk/news/</stringProp>
-          <stringProp name="HTTPSampler.method">GET</stringProp>
           <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
-          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <stringProp name="HTTPSampler.method">GET</stringProp>
           <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
-          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
-          <boolProp name="HTTPSampler.BROWSER_COMPATIBLE_MULTIPART">false</boolProp>
-          <boolProp name="HTTPSampler.image_parser">false</boolProp>
-          <boolProp name="HTTPSampler.concurrentDwn">false</boolProp>
-          <stringProp name="HTTPSampler.concurrentPool">6</stringProp>
-          <boolProp name="HTTPSampler.md5">false</boolProp>
-          <intProp name="HTTPSampler.ipSourceType">0</intProp>
+          <boolProp name="HTTPSampler.postBodyRaw">false</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables">
+            <collectionProp name="Arguments.arguments"/>
+          </elementProp>
         </HTTPSamplerProxy>
         <hashTree/>
-        <TestAction guiclass="TestActionGui" testclass="TestAction" testname="Think Time" enabled="true">
+        <TestAction guiclass="TestActionGui" testclass="TestAction" testname="Think Time">
           <intProp name="ActionProcessor.action">1</intProp>
           <intProp name="ActionProcessor.target">0</intProp>
           <stringProp name="ActionProcessor.duration">${__P(ThinkTime,2000)}</stringProp>
@@ -90,29 +72,22 @@
           </UniformRandomTimer>
           <hashTree/>
         </hashTree>
-        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="HTTP Request - Article" enabled="true">
-          <boolProp name="HTTPSampler.postBodyRaw">false</boolProp>
-          <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
-            <collectionProp name="Arguments.arguments"/>
-          </elementProp>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="HTTP Request - Article">
+          <intProp name="HTTPSampler.concurrentPool">6</intProp>
           <stringProp name="HTTPSampler.domain">www.bbc.co.uk</stringProp>
           <stringProp name="HTTPSampler.port">443</stringProp>
           <stringProp name="HTTPSampler.protocol">https</stringProp>
           <stringProp name="HTTPSampler.path">https://www.bbc.co.uk/news/education-66669239</stringProp>
-          <stringProp name="HTTPSampler.method">GET</stringProp>
           <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
-          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <stringProp name="HTTPSampler.method">GET</stringProp>
           <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
-          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
-          <boolProp name="HTTPSampler.BROWSER_COMPATIBLE_MULTIPART">false</boolProp>
-          <boolProp name="HTTPSampler.image_parser">false</boolProp>
-          <boolProp name="HTTPSampler.concurrentDwn">false</boolProp>
-          <stringProp name="HTTPSampler.concurrentPool">6</stringProp>
-          <boolProp name="HTTPSampler.md5">false</boolProp>
-          <intProp name="HTTPSampler.ipSourceType">0</intProp>
+          <boolProp name="HTTPSampler.postBodyRaw">false</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables">
+            <collectionProp name="Arguments.arguments"/>
+          </elementProp>
         </HTTPSamplerProxy>
         <hashTree/>
-        <TestAction guiclass="TestActionGui" testclass="TestAction" testname="Think Time" enabled="true">
+        <TestAction guiclass="TestActionGui" testclass="TestAction" testname="Think Time">
           <intProp name="ActionProcessor.action">1</intProp>
           <intProp name="ActionProcessor.target">0</intProp>
           <stringProp name="ActionProcessor.duration">${__P(ThinkTime,2000)}</stringProp>
@@ -124,8 +99,8 @@
           </UniformRandomTimer>
           <hashTree/>
         </hashTree>
-        <nz.co.breakpoint.jmeter.JUnitReporter guiclass="TestBeanGUI" testclass="nz.co.breakpoint.jmeter.JUnitReporter" testname="JUnit Reporter" enabled="true">
-          <stringProp name="filename">junit_results.xml</stringProp>
+        <nz.co.breakpoint.jmeter.JUnitReporter guiclass="TestBeanGUI" testclass="nz.co.breakpoint.jmeter.JUnitReporter" testname="JUnit Reporter">
+          <stringProp name="filename">../results/junit_results.xml</stringProp>
           <collectionProp name="kpis">
             <elementProp name="90th percentile" elementType="nz.co.breakpoint.jmeter.KPI" testname="90th percentile">
               <stringProp name="metric">P90</stringProp>
@@ -149,7 +124,7 @@
         </nz.co.breakpoint.jmeter.JUnitReporter>
         <hashTree/>
       </hashTree>
-      <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="false">
+      <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree">
         <boolProp name="ResultCollector.error_logging">false</boolProp>
         <objProp>
           <name>saveConfig</name>
@@ -223,7 +198,7 @@
         <stringProp name="filename"></stringProp>
       </ResultCollector>
       <hashTree/>
-      <ResultCollector guiclass="StatVisualizer" testclass="ResultCollector" testname="Aggregate Report" enabled="true">
+      <ResultCollector guiclass="StatVisualizer" testclass="ResultCollector" testname="Aggregate Report" enabled="false">
         <boolProp name="ResultCollector.error_logging">false</boolProp>
         <objProp>
           <name>saveConfig</name>
@@ -261,7 +236,7 @@
       </ResultCollector>
       <hashTree/>
       <BackendListener guiclass="BackendListenerGui" testclass="BackendListener" testname="Backend Listener" enabled="false">
-        <elementProp name="arguments" elementType="Arguments" guiclass="ArgumentsPanel" testclass="Arguments" enabled="true">
+        <elementProp name="arguments" elementType="Arguments" guiclass="ArgumentsPanel" testclass="Arguments">
           <collectionProp name="Arguments.arguments">
             <elementProp name="influxdbMetricsSender" elementType="Argument">
               <stringProp name="Argument.name">influxdbMetricsSender</stringProp>
@@ -305,6 +280,7 @@
             </elementProp>
             <elementProp name="eventTags" elementType="Argument">
               <stringProp name="Argument.name">eventTags</stringProp>
+              <stringProp name="Argument.value"></stringProp>
               <stringProp name="Argument.metadata">=</stringProp>
             </elementProp>
             <elementProp name="influxdbToken" elementType="Argument">
@@ -316,51 +292,6 @@
         </elementProp>
         <stringProp name="classname">org.apache.jmeter.visualizers.backend.influxdb.InfluxdbBackendListenerClient</stringProp>
       </BackendListener>
-      <hashTree/>
-      <kg.apc.jmeter.vizualizers.CorrectedResultCollector guiclass="kg.apc.jmeter.vizualizers.ThreadsStateOverTimeGui" testclass="kg.apc.jmeter.vizualizers.CorrectedResultCollector" testname="jp@gc - Active Threads Over Time" enabled="false">
-        <boolProp name="ResultCollector.error_logging">false</boolProp>
-        <objProp>
-          <name>saveConfig</name>
-          <value class="SampleSaveConfiguration">
-            <time>true</time>
-            <latency>true</latency>
-            <timestamp>true</timestamp>
-            <success>true</success>
-            <label>true</label>
-            <code>true</code>
-            <message>true</message>
-            <threadName>true</threadName>
-            <dataType>true</dataType>
-            <encoding>false</encoding>
-            <assertions>true</assertions>
-            <subresults>true</subresults>
-            <responseData>false</responseData>
-            <samplerData>false</samplerData>
-            <xml>false</xml>
-            <fieldNames>true</fieldNames>
-            <responseHeaders>false</responseHeaders>
-            <requestHeaders>false</requestHeaders>
-            <responseDataOnError>false</responseDataOnError>
-            <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
-            <assertionsResultsToSave>0</assertionsResultsToSave>
-            <bytes>true</bytes>
-            <sentBytes>true</sentBytes>
-            <url>true</url>
-            <threadCounts>true</threadCounts>
-            <idleTime>true</idleTime>
-            <connectTime>true</connectTime>
-          </value>
-        </objProp>
-        <stringProp name="filename"></stringProp>
-        <longProp name="interval_grouping">500</longProp>
-        <boolProp name="graph_aggregated">false</boolProp>
-        <stringProp name="include_sample_labels"></stringProp>
-        <stringProp name="exclude_sample_labels"></stringProp>
-        <stringProp name="start_offset"></stringProp>
-        <stringProp name="end_offset"></stringProp>
-        <boolProp name="include_checkbox_state">false</boolProp>
-        <boolProp name="exclude_checkbox_state">false</boolProp>
-      </kg.apc.jmeter.vizualizers.CorrectedResultCollector>
       <hashTree/>
     </hashTree>
   </hashTree>
