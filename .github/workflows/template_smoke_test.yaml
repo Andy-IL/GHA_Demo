@@ -34,9 +34,11 @@ jobs:
       - name: Execute Smoke Test
         run: |
          BASEFOLDER=./jmeter_demo_tests
+         cd $BASEFOLDER
+         ls -al
          sudo mkdir  $BASEFOLDER/results/html
          
-         java -jar ./apache-jmeter-5.5/bin/ApacheJMeter.jar \
+         java -jar ./apache-jmeter-5.6.3/bin/ApacheJMeter.jar \
          --nongui \
          --testfile $BASEFOLDER/scenarios/Simple_dummy_sampler_test.jmx \
          --addprop $BASEFOLDER/properties/smoke_test.properties \
