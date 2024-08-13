@@ -35,10 +35,11 @@ jobs:
       #          BASEFOLDER=./jmeter_demo_tests  
 
         run: |
-         BASEFOLDER=jmeter_demo_tests  
+         BASEFOLDER=./jmeter_demo_tests  
          cd $BASEFOLDER
+         pwd
          ls -al
-         sudo mkdir  $BASEFOLDER/results/html
+         sudo mkdir -p $BASEFOLDER/results/html
          
          java -jar ./apache-jmeter-5.6.3/bin/ApacheJMeter.jar \
          --nongui \
