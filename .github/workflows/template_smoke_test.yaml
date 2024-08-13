@@ -37,9 +37,7 @@ jobs:
         run: |
          pwd
          BASEFOLDER=./jmeter_demo_tests  
-         cd $BASEFOLDER
-         pwd
-         ls -al
+         
          sudo mkdir -p $BASEFOLDER/results/html
          ls -al
          ls -al ..
