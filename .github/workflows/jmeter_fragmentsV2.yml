@@ -1,9 +1,9 @@
 #  YML to get jmeter and run it
-
+# mod AL no push
 name: jmeter_fragmentsV2
 
 on:
-  push:
+ # push:
   workflow_dispatch:
 
 jobs:
