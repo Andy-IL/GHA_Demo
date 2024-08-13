@@ -11,7 +11,8 @@ else
 fi
 
 echo "######################GET JMETER#######################"
-wget -q https://dlcdn.apache.org/jmeter/binaries/apache-jmeter-5.5.zip
+# wget -q  https://dlcdn.apache.org/jmeter/binaries/apache-jmeter-5.5.zip
+wget   https://dlcdn.apache.org/jmeter/binaries/apache-jmeter-5.5.zip
 
 echo "######################UNZIP JMETER#####################"
 if [ -e apache-jmeter-5.5.zip ]; then

@@ -13,8 +13,8 @@ on:
 #     - cron: '0 0 1 1 *'
   push:
     branches: [ "main" ]
-    paths:
-      - 'jmeter_demo_tests/scenarios/Simple_dummy_sampler_test.jmx'
+    # paths:
+    #   - 'jmeter_demo_tests/scenarios/Simple_dummy_sampler_test.jmx'
 #  pull_request:
  #   branches: [ "main" ]
 
