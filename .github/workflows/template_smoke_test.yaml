@@ -32,8 +32,10 @@ jobs:
         uses: ./jmeter-install
         
       - name: Execute Smoke Test
+      #          BASEFOLDER=./jmeter_demo_tests  
+
         run: |
-         BASEFOLDER=./jmeter_demo_tests
+         BASEFOLDER=jmeter_demo_tests  
          cd $BASEFOLDER
          ls -al
          sudo mkdir  $BASEFOLDER/results/html
