@@ -24,7 +24,7 @@
         </elementProp>
       </ThreadGroup>
       <hashTree>
-        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="HTTP Request - Home">
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="HTTP Request - Home" enabled="true">
           <intProp name="HTTPSampler.concurrentPool">6</intProp>
           <stringProp name="HTTPSampler.domain">www.bbc.co.uk</stringProp>
           <stringProp name="HTTPSampler.port">443</stringProp>
@@ -39,13 +39,13 @@
           </elementProp>
         </HTTPSamplerProxy>
         <hashTree/>
-        <TestAction guiclass="TestActionGui" testclass="TestAction" testname="Think Time">
+        <TestAction guiclass="TestActionGui" testclass="TestAction" testname="Think Time" enabled="true">
           <intProp name="ActionProcessor.action">1</intProp>
           <intProp name="ActionProcessor.target">0</intProp>
           <stringProp name="ActionProcessor.duration">${__P(ThinkTime,2000)}</stringProp>
         </TestAction>
         <hashTree/>
-        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="HTTP Request - News">
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="HTTP Request - News" enabled="true">
           <intProp name="HTTPSampler.concurrentPool">6</intProp>
           <stringProp name="HTTPSampler.domain">www.bbc.co.uk</stringProp>
           <stringProp name="HTTPSampler.port">443</stringProp>
@@ -60,7 +60,7 @@
           </elementProp>
         </HTTPSamplerProxy>
         <hashTree/>
-        <TestAction guiclass="TestActionGui" testclass="TestAction" testname="Think Time">
+        <TestAction guiclass="TestActionGui" testclass="TestAction" testname="Think Time" enabled="true">
           <intProp name="ActionProcessor.action">1</intProp>
           <intProp name="ActionProcessor.target">0</intProp>
           <stringProp name="ActionProcessor.duration">${__P(ThinkTime,2000)}</stringProp>
@@ -72,7 +72,7 @@
           </UniformRandomTimer>
           <hashTree/>
         </hashTree>
-        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="HTTP Request - Article">
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="HTTP Request - Article" enabled="true">
           <intProp name="HTTPSampler.concurrentPool">6</intProp>
           <stringProp name="HTTPSampler.domain">www.bbc.co.uk</stringProp>
           <stringProp name="HTTPSampler.port">443</stringProp>
@@ -87,7 +87,7 @@
           </elementProp>
         </HTTPSamplerProxy>
         <hashTree/>
-        <TestAction guiclass="TestActionGui" testclass="TestAction" testname="Think Time">
+        <TestAction guiclass="TestActionGui" testclass="TestAction" testname="Think Time" enabled="true">
           <intProp name="ActionProcessor.action">1</intProp>
           <intProp name="ActionProcessor.target">0</intProp>
           <stringProp name="ActionProcessor.duration">${__P(ThinkTime,2000)}</stringProp>
@@ -124,7 +124,7 @@
         </nz.co.breakpoint.jmeter.JUnitReporter>
         <hashTree/>
       </hashTree>
-      <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree">
+      <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="true">
         <boolProp name="ResultCollector.error_logging">false</boolProp>
         <objProp>
           <name>saveConfig</name>

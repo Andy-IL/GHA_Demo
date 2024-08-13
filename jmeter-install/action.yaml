@@ -1,0 +1,10 @@
+name: 'Install JMeter'
+description: 'Installing Jmeter'
+runs:
+  using: "composite"
+  steps:
+    - name : Install_JMeter
+      shell: bash
+      run: |
+        sudo chmod 700 ${{ github.action_path }}/jmeter-install-5-5.sh
+        bash ${{ github.action_path }}/jmeter-install-5-5.sh

@@ -1,0 +1,84 @@
+name: JMeter Smoke Test
+#  Copy AIL from templates project
+# GitHub Actions YML 
+#
+on:
+#   schedule:
+#             #Midnight !st January any day of week
+#             #┌───────────────────── minute (0 - 59)
+#             #│ ┌─────────────────── hour (0 - 23)
+#             #│ │ ┌───────────────── day of the month (1 - 31)
+#             #│ │ │ ┌─────────────── month (1 - 12)
+#             #│ │ │ │ ┌───────────── day of the week (0 - 6)
+#     - cron: '0 0 1 1 *'
+  push:
+    branches: [ "main" ]
+    paths:
+      - 'jmeter_demo_tests/scenarios/Simple_dummy_sampler_test.jmx'
+#  pull_request:
+ #   branches: [ "main" ]
+
+  workflow_dispatch:
+
+jobs:
+  smoke-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Pull Repo
+        uses: actions/checkout@v3
+        
+      - name: Install JMeter
+        uses: ./jmeter-install
+        
+      - name: Execute Smoke Test
+        run: |
+         BASEFOLDER=./jmeter_demo_tests
+         sudo mkdir  $BASEFOLDER/results/html
+         
+         java -jar ./apache-jmeter-5.5/bin/ApacheJMeter.jar \
+         --nongui \
+         --testfile $BASEFOLDER/scenarios/Simple_dummy_sampler_test.jmx \
+         --addprop $BASEFOLDER/properties/smoke_test.properties \
+         --addprop $BASEFOLDER/properties/staging_environment.properties \
+         --addprop $BASEFOLDER/properties/nfrs.properties \
+         --jmeterproperty DURATION=60 \
+         --jmeterlogfile $BASEFOLDER/logs/jmeter.log \
+         --loglevel jorphan=INFO \
+         --loglevel jmeter.util=DEBUG \
+         --logfile $BASEFOLDER/results/results.csv \
+         --reportatendofloadtests \
+         --reportoutputfolder $BASEFOLDER/results/html
+        #  --jmeterproperty BASIC_HTTP_PASSWORD=${{secrets.basic_auth_password }} \
+        #  --jmeterproperty API_KEY=${{secrets.api_key }} \
+        #  --jmeterproperty INFLUX_PASSWORD=${{secrets.influx_password }} \
+        #  --jmeterproperty INFLUX_URL=XXXXX \
+        
+      
+    #   - name: Install Junit Processor and Process Junit output
+    #     run: |     
+    #      python3 -m pip install junit2html
+    #      junit2html junit.xml ./jmeter_demo_tests/results/junit.html
+    #      junit2html junit.xml --summary-matrix > ./jmeter_demo_tests/results/junit-matrix.txt
+
+      - name: Save Results Folder
+        uses: actions/upload-artifact@v3
+        with:
+          name: Results
+          path: ./jmeter_demo_tests/results/*
+
+      - name: Save Logs
+        uses: actions/upload-artifact@v3
+        with:
+          name: Logs
+          path: ./jmeter_demo_tests/logs/*
+
+      - name: Publish Test Report
+        uses: mikepenz/action-junit-report@v3
+        if: success() || failure() # always run even if the previous step fails
+        with:
+          report_paths: 'junit.xml'
+          detailed_summary: true
+          fail_on_failure: true
+          include_passed: true
+          summary: true
