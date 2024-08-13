@@ -11,29 +11,32 @@ else
 fi
 
 echo "######################GET JMETER#######################"
-wget -q  https://dlcdn.apache.org/jmeter/binaries/apache-jmeter-5.5.zip
+wget -q  https://dlcdn.apache.org/jmeter/binaries/apache-jmeter-5.6.3.zip
 
 echo "######################UNZIP JMETER#####################"
-if [ -e apache-jmeter-5.5.zip ]; then
-    unzip apache-jmeter-5.5.zip >/dev/null 2>&1
+if [ -e apache-jmeter-5.6.3.zip ]; then
+    unzip apache-jmeter-5.6.3.zip >/dev/null 2>&1
 else
-    echo "apache-jmeter-5.5.zip File not found! - EXITING"
+    echo "apache-jmeter-5.6.3.zip File not found! - EXITING"
     exit 1
 fi
 
 #Get command runner
 echo "######################GET COMMAND RUNNER###############"
-wget https://repo1.maven.org/maven2/kg/apc/cmdrunner/2.3/cmdrunner-2.3.jar --directory-prefix ./apache-jmeter-5.5/lib >/dev/null 2>&1
+wget https://repo1.maven.org/maven2/kg/apc/cmdrunner/2.3/cmdrunner-2.3.jar --directory-prefix ./apache-jmeter-5.6.3/lib 
+#  >/dev/null 2>&1
 
 #Get Plugins manager
 echo "######################GET PLUGINS MANAGER##############"
-wget https://repo1.maven.org/maven2/kg/apc/jmeter-plugins-manager/1.8/jmeter-plugins-manager-1.8.jar --directory-prefix ./apache-jmeter-5.5/lib/ext >/dev/null 2>&1
-java -cp ./apache-jmeter-5.5/lib/ext/jmeter-plugins-manager-1.8.jar org.jmeterplugins.repository.PluginManagerCMDInstaller >/dev/null 2>&1
+wget https://repo1.maven.org/maven2/kg/apc/jmeter-plugins-manager/1.8/jmeter-plugins-manager-1.8.jar --directory-prefix ./apache-jmeter-5.6.3/lib/ext 
+#  >/dev/null 2>&1
+java -cp ./apache-jmeter-5.6.3/lib/ext/jmeter-plugins-manager-1.8.jar org.jmeterplugins.repository.PluginManagerCMDInstaller 
+#  >/dev/null 2>&1
 
 #Install plugins except licensed plugins
 echo "######################INSTALLING PLUGINS###############"
-#./apache-jmeter-5.5/bin/PluginsManagerCMD.sh install-all-except  ulp-jmeter-autocorrelator-plugin,ulp-jmeter-gwt-plugin,ulp-jmeter-videostreaming-plugin >/dev/null 2>&1
-./apache-jmeter-5.5/bin/PluginsManagerCMD.sh install \
+#./apache-jmeter-5.6.3/bin/PluginsManagerCMD.sh install-all-except  ulp-jmeter-autocorrelator-plugin,ulp-jmeter-gwt-plugin,ulp-jmeter-videostreaming-plugin >/dev/null 2>&1
+./apache-jmeter-5.6.3/bin/PluginsManagerCMD.sh install \
 jpgc-functions,\
 jpgc-cmd,\
 jpgc-graphs-basic,\
@@ -55,12 +58,12 @@ jpgc-synthesis,\
 bzm-random-csv >/dev/null 2>&1
 
 #Datadog plugin for backend listener
-wget -o ./apache-jmeter-5.5/lib/ext/jmeter-datadog-backend-listener-0.3.1.jar https://github.com/DataDog/jmeter-datadog-backend-listener/releases/download/0.3.1/jmeter-datadog-backend-listener-0.3.1.jar
-#wget -o ./apache-jmeter-5.5/lib/ext/jmeter-dynatrace-plugin-1.8.0.jar https://search.maven.org/artifact/com.dynatrace.jmeter.plugins/jmeter-dynatrace-plugin/1.8.0/jar
+wget -o ./apache-jmeter-5.6.3/lib/ext/jmeter-datadog-backend-listener-0.3.1.jar https://github.com/DataDog/jmeter-datadog-backend-listener/releases/download/0.3.1/jmeter-datadog-backend-listener-0.3.1.jar
+#wget -o ./apache-jmeter-5.6.3/lib/ext/jmeter-dynatrace-plugin-1.8.0.jar https://search.maven.org/artifact/com.dynatrace.jmeter.plugins/jmeter-dynatrace-plugin/1.8.0/jar
 
 echo "######################JMETER VERSION###################"
 #Print JMeter Version
-java -jar ./apache-jmeter-5.5/bin/ApacheJMeter.jar -v
+java -jar ./apache-jmeter-5.6.3/bin/ApacheJMeter.jar -v
 echo "######################FINISHED#########################"
 exit 0
 
