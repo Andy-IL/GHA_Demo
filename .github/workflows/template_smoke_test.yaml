@@ -41,8 +41,10 @@ jobs:
          pwd
          ls -al
          sudo mkdir -p $BASEFOLDER/results/html
+         ls -al
+         ls -al ..
          
-         java -jar ./apache-jmeter-5.6.3/bin/ApacheJMeter.jar \
+         java -jar ../apache-jmeter-5.6.3/bin/ApacheJMeter.jar \
          --nongui \
          --testfile $BASEFOLDER/scenarios/Simple_dummy_sampler_test.jmx \
          --addprop $BASEFOLDER/properties/smoke_test.properties \
