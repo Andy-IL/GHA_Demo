@@ -35,6 +35,7 @@ jobs:
       #          BASEFOLDER=./jmeter_demo_tests  
 
         run: |
+         pwd
          BASEFOLDER=./jmeter_demo_tests  
          cd $BASEFOLDER
          pwd
