@@ -87,13 +87,13 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: Results
-          path: $BASEFOLDER/results/*
+          path: /home/runner/work/GHA_Demo/GHA_Demo/jmeter_demo_tests/results/*
 
       - name: Save Logs
         uses: actions/upload-artifact@v4
         with:
           name: Logs
-          path: $BASEFOLDER/logs/*
+          path: /home/runner/work/GHA_Demo/GHA_Demo/jmeter_demo_tests/logs/*
 
       - name: Publish Test Report
         uses: mikepenz/action-junit-report@v3
