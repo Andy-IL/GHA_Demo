@@ -21,7 +21,7 @@ on:
   workflow_dispatch:
 
 env: 
-    BASEFOLDER: ./jmeter_demo_tests  
+    BASEFOLDER: /home/runner/work/GHA_Demo/GHA_Demo/jmeter_demo_tests 
  
 jobs:
   smoke-test:
@@ -40,7 +40,7 @@ jobs:
         run: |
          pwd
          
-         mkdir -p $BASEFOLDER/results/html         #  sudo chmod 777 $BASEFOLDER/results         #  sudo chmod 777 $BASEFOLDER/results/html
+         mkdir -p $BASEFOLDER/results/html
 
          ls -al 
          ls -al $BASEFOLDER
@@ -66,11 +66,13 @@ jobs:
         #  --jmeterproperty INFLUX_URL=XXXXX \
         
       
-    #   - name: Install Junit Processor and Process Junit output
-    #     run: |     
-    #      python3 -m pip install junit2html
-    #      junit2html junit.xml ./jmeter_demo_tests/results/junit.html
-    #      junit2html junit.xml --summary-matrix > ./jmeter_demo_tests/results/junit-matrix.txt
+      # - name: Install Junit Processor and Process Junit output
+      #   run: |     
+      #    pwd
+      #    python3 -m pip install junit2html
+      #    ls -al
+      #    junit2html junit.xml ./jmeter_demo_tests/results/junit.html
+      #    junit2html junit.xml --summary-matrix > ./jmeter_demo_tests/results/junit-matrix.txt
 
       - name: list results and log files
         run: |
@@ -85,7 +87,7 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: Results
-          path: /home/runner/work/GHA_Demo/GHA_Demo/jmeter_demo_tests/results/*
+          path: $BASEFOLDER/results/*
 
       - name: Save Logs
         uses: actions/upload-artifact@v3
