@@ -48,7 +48,7 @@ jobs:
          
          java -jar ./apache-jmeter-5.6.3/bin/ApacheJMeter.jar \
          --nongui \
-         -l $BASEFOLDER/results/results.csv \
+         -l ./jmeter_demo_tests/results/results.csv \
          --testfile $BASEFOLDER/scenarios/Simple_dummy_sampler_test.jmx \
          --addprop $BASEFOLDER/properties/smoke_test.properties \
          --addprop $BASEFOLDER/properties/staging_environment.properties \
@@ -73,6 +73,8 @@ jobs:
 
       - name: list results and log files
         run: |
+          pwd
+          ls -al
           echo "BASEFOLDER:  $BASEFOLDER"
           ls -al $BASEFOLDER/results
           ls -al $BASEFOLDER/results/html
