@@ -20,6 +20,9 @@ on:
 
   workflow_dispatch:
 
+env: 
+    BASEFOLDER: ./jmeter_demo_tests  
+ 
 jobs:
   smoke-test:
     runs-on: ubuntu-latest
@@ -36,7 +39,6 @@ jobs:
 
         run: |
          pwd
-         BASEFOLDER=./jmeter_demo_tests  
          
          sudo mkdir -p $BASEFOLDER/results/html
          ls -al 
