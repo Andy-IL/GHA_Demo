@@ -71,13 +71,13 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: Results
-          path: ./jmeter_demo_tests/results/*
+          path: $BASEFOLDER/results/*
 
       - name: Save Logs
         uses: actions/upload-artifact@v3
         with:
           name: Logs
-          path: ./jmeter_demo_tests/logs/*
+          path: $BASEFOLDER/logs/*
 
       - name: Publish Test Report
         uses: mikepenz/action-junit-report@v3
