@@ -41,8 +41,8 @@ jobs:
          pwd
          
          sudo mkdir -p $BASEFOLDER/results/html
-         chmod 777 $BASEFOLDER/results
-         chmod 777 $BASEFOLDER/results/html
+         sudo chmod 777 $BASEFOLDER/results
+         sudo chmod 777 $BASEFOLDER/results/html
 
          ls -al 
          ls -al $BASEFOLDER
