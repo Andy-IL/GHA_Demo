@@ -21,7 +21,7 @@ on:
   workflow_dispatch:
 
 env: 
-    BASEFOLDER: /home/runner/work/GHA_Demo/GHA_Demo/jmeter_demo_tests 
+    BASEFOLDER: /home/runner/work/GHA_Demo/GHA_Demo/jmeter_demo_tests
  
 jobs:
   smoke-test:
