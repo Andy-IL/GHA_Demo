@@ -40,9 +40,7 @@ jobs:
         run: |
          pwd
          
-         sudo mkdir -p $BASEFOLDER/results/html
-         sudo chmod 777 $BASEFOLDER/results
-         sudo chmod 777 $BASEFOLDER/results/html
+         mkdir -p $BASEFOLDER/results/html         #  sudo chmod 777 $BASEFOLDER/results         #  sudo chmod 777 $BASEFOLDER/results/html
 
          ls -al 
          ls -al $BASEFOLDER
@@ -87,7 +85,7 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: Results
-          path: $BASEFOLDER/results/*
+          path: /home/runner/work/GHA_Demo/GHA_Demo/jmeter_demo_tests/results/*
 
       - name: Save Logs
         uses: actions/upload-artifact@v3
