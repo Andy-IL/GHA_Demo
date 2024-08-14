@@ -41,6 +41,8 @@ jobs:
          sudo mkdir -p $BASEFOLDER/results/html
          ls -al 
          ls -al $BASEFOLDER
+         ls -al $BASEFOLDER/results
+         
          
          java -jar ./apache-jmeter-5.6.3/bin/ApacheJMeter.jar \
          --nongui \
@@ -66,6 +68,12 @@ jobs:
     #      python3 -m pip install junit2html
     #      junit2html junit.xml ./jmeter_demo_tests/results/junit.html
     #      junit2html junit.xml --summary-matrix > ./jmeter_demo_tests/results/junit-matrix.txt
+
+      - name: list results and log files
+        run: |
+          echo "BASEFOLDER:  $BASEFOLDER"
+          ls -al $BASEFOLDER/results
+          ls -al $BASEFOLDER/logs
 
       - name: Save Results Folder
         uses: actions/upload-artifact@v3
