@@ -75,6 +75,7 @@ jobs:
         run: |
           echo "BASEFOLDER:  $BASEFOLDER"
           ls -al $BASEFOLDER/results
+          ls -al $BASEFOLDER/results/html
           ls -al $BASEFOLDER/logs
 
       - name: Save Results Folder
