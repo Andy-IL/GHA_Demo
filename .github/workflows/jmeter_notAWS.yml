@@ -1,9 +1,9 @@
 #  YML to get jmeter and run it
-
+# not push
 name: jmeter_notAWS
 
 on:
-  push:
+ #  push:
   workflow_dispatch:
 
 jobs:
