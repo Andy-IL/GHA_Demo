@@ -48,6 +48,7 @@ jobs:
          
          java -jar ./apache-jmeter-5.6.3/bin/ApacheJMeter.jar \
          --nongui \
+         -l $BASEFOLDER/results/results.csv \
          --testfile $BASEFOLDER/scenarios/Simple_dummy_sampler_test.jmx \
          --addprop $BASEFOLDER/properties/smoke_test.properties \
          --addprop $BASEFOLDER/properties/staging_environment.properties \
@@ -56,7 +57,6 @@ jobs:
          --jmeterlogfile $BASEFOLDER/logs/jmeter.log \
          --loglevel jorphan=INFO \
          --loglevel jmeter.util=DEBUG \
-         --logfile $BASEFOLDER/results/results.csv \
          --reportatendofloadtests \
          --reportoutputfolder $BASEFOLDER/results/html
         #  --jmeterproperty BASIC_HTTP_PASSWORD=${{secrets.basic_auth_password }} \
